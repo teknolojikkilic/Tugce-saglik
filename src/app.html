@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="/ikon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --font: 'Geologica', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
@@ -45,6 +45,9 @@ html[data-tema="gunduz"] {
   --kafein: #8B5A2B;
   --uyari: #B83A26;
   --perde: rgba(19, 34, 28, .38);
+  --kagit: #FFFDF6;
+  --kagit-murekkep: #22302A;
+  --kagit-cizgi: #E9E2D2;
   color-scheme: light;
 }
 /* Gece: mavi ışıksız, amber tonlar */
@@ -69,6 +72,9 @@ html[data-tema="gece"] {
   --kafein: #A86E3C;
   --uyari: #FF7452;
   --perde: rgba(0, 0, 0, .55);
+  --kagit: #261910;
+  --kagit-murekkep: #F6D9BC;
+  --kagit-cizgi: #3E2A1B;
   color-scheme: dark;
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -338,15 +344,55 @@ textarea.girdi { height: auto; min-height: 76px; padding: 12px 14px; resize: ver
 .tam-ekran .ic { max-width: 420px; margin: 0 auto; }
 .hediye-gunes { width: 92px; height: 92px; margin-bottom: 26px; }
 .hosgeldin h1 { margin: 0 0 18px; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
-.hosgeldin .mektup { font-size: 17px; line-height: 1.6; color: var(--murekkep-2); margin: 0 0 10px; }
-.hosgeldin .imza { font-size: 16px; color: var(--soluk); margin: 0 0 30px; }
+.hosgeldin .giris { font-size: 17px; line-height: 1.6; color: var(--murekkep-2); margin: 0 0 28px; }
 .hosgeldin ul { list-style: none; margin: 0 0 30px; padding: 0; border-top: 1px solid var(--cizgi); }
 .hosgeldin li { display: grid; grid-template-columns: 34px 1fr; gap: 8px; padding: 13px 0; border-bottom: 1px solid var(--cizgi); font-size: 15px; color: var(--murekkep-2); }
 .hosgeldin li span:first-child { font-size: 20px; }
 .hosgeldin .dugme + .dugme { margin-top: 10px; }
 .yukleniyor { display: grid; place-items: center; min-height: 60vh; color: var(--soluk); }
 
+/* ── Kılıç'tan not ───────────────────────── */
+.ust-sag { display: flex; gap: 10px; flex: none; }
+.not-rozet {
+  position: relative; width: 42px; height: 42px; border-radius: 50%; border: 0; padding: 0;
+  background: var(--gunes); color: #1A1206; font-size: 22px; font-weight: 700; line-height: 1;
+  display: grid; place-items: center;
+}
+.not-rozet::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gunes);
+  animation: rozet-nabiz 2.2s ease-out infinite;
+}
+@keyframes rozet-nabiz { from { transform: scale(1); opacity: .7; } to { transform: scale(1.7); opacity: 0; } }
+
+.mektup-perde {
+  position: fixed; inset: 0; z-index: 65; background: var(--perde);
+  display: flex; align-items: center; justify-content: center;
+  padding: calc(var(--guvenli-ust) + 20px) 18px calc(var(--guvenli-alt) + 20px);
+}
+.davet {
+  width: min(100%, 360px); background: var(--yuzey); border-radius: 26px; padding: 30px 24px 22px; text-align: center;
+}
+.davet svg { width: 132px; height: auto; display: block; margin: 0 auto 18px; }
+.davet h2 { margin: 0 0 22px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+.davet .metin-dugme { margin-top: 6px; color: var(--soluk); font-weight: 500; }
+.kagit {
+  width: min(100%, 420px); max-height: 100%; overflow-y: auto; overscroll-behavior: contain;
+  background: var(--kagit); color: var(--kagit-murekkep); border-radius: 6px;
+  padding: 30px 26px 24px; box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 33px, var(--kagit-cizgi) 33px, var(--kagit-cizgi) 34px);
+  background-position: 0 14px;
+  font-family: 'Caveat', 'Bradley Hand', 'Segoe Print', cursive;
+  font-size: 25px; line-height: 34px; font-weight: 500;
+}
+.kagit .selam-satir { margin: 0 0 34px; font-weight: 600; }
+.kagit p { margin: 0 0 34px; }
+.kagit .imza { text-align: right; font-size: 34px; font-weight: 600; margin: 0 6px 20px 0; }
+.kagit .dugme { font-family: var(--font); font-size: 16px; line-height: normal; }
+.giris-anim { animation: kagit-gelis .5s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes kagit-gelis { from { transform: translateY(36px) scale(.96); opacity: 0; } to { transform: none; opacity: 1; } }
+
 @media (prefers-reduced-motion: reduce) {
+  .not-rozet::after { animation: none; display: none; }
   *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
 }
 @media (min-width: 700px) {
@@ -370,15 +416,22 @@ textarea.girdi { height: auto; min-height: 76px; padding: 12px 14px; resize: ver
 <section class="sayfa" id="sayfa" role="dialog" aria-modal="true" aria-labelledby="sayfa-baslik"></section>
 <div class="bildirim" id="bildirim" role="status" aria-live="polite"></div>
 <div class="zamanlayici gizli" id="zamanlayici" role="dialog" aria-modal="true"></div>
+<div class="mektup-perde gizli" id="mektup" role="dialog" aria-modal="true" aria-labelledby="mektup-baslik"></div>
 <div id="tam-ekran"></div>
 
 <script>
 /*__DEMO__*/
 /*__SHARED__*/
 
-// ── Hediye notu: buradaki iki satırı istediğin gibi değiştirebilirsin ──
-const HEDIYE_NOTU = 'Bize her gün sağlıklı yaşamın büyük kararlardan değil, küçük ve düzenli alışkanlıklardan geçtiğini gösterdiniz. Bu küçük uygulama o alışkanlıklar için: güneşiniz, rutinleriniz, suyunuz ve öğünleriniz tek bir yerde dursun diye. Emeğiniz için teşekkürler.';
-const HEDIYE_IMZA = 'Öğrenciniz Kılıç';
+// ── Kılıç'ın mektubu: ünlem rozetine basınca açılır ──
+const MEKTUP_SELAM = 'Hello Ms. Tuğçe,';
+const MEKTUP = [
+  'Happy Teachers Day!',
+  'I’ve working for this site for 20 days and I finished. I made this web site for you, it is for your help. I wish you will love.',
+  'I am very happy because of I am your student 😀',
+  'If there is a problem in the site text me, I will fix.',
+];
+const MEKTUP_IMZA = 'Kılıç';
 
 const WIDGET_SABLON = "__WIDGET_JS__";
 const KESTIRME_ADI = 'Protokol Senkron';
@@ -490,7 +543,10 @@ function selamMetni(n) {
 function ustBolum(baslik, alt) {
   return `<header class="ust">
     <div><h1 class="selam">${kac(baslik)}</h1><p class="tarih">${kac(alt)}</p></div>
-    <button class="yuvarlak" data-eylem="ayarlar" aria-label="Ayarlar">${IKON.ayar}</button>
+    <div class="ust-sag">
+      ${S.ayarlar && !S.ayarlar.notOkundu ? `<button class="not-rozet" data-eylem="not" aria-label="Kılıç'tan bir not var">!</button>` : ''}
+      <button class="yuvarlak" data-eylem="ayarlar" aria-label="Ayarlar">${IKON.ayar}</button>
+    </div>
   </header>`;
 }
 
@@ -1048,6 +1104,8 @@ function ayarlarSayfasi() {
       <button type="button" data-eylem="tema:koyu" class="${tema === 'koyu' ? 'secili' : ''}">Hep koyu</button>
     </div><p class="not-yazi" style="margin-top:8px">"Güneşe göre" seçiliyken gün batınca ekran mavi ışıksız amber tonlara geçer.</p></div>
     <div class="ayrac"></div>
+    <button class="dugme ikincil" data-eylem="not-oku">✉️ Kılıç'ın notunu oku</button>
+    <div class="ayrac"></div>
     <h3 style="margin:0 0 10px;font-size:17px">iPhone widget'ı</h3>
     <ol class="adimlar">
       <li>App Store'dan ücretsiz <b>Scriptable</b> uygulamasını indir.</li>
@@ -1196,6 +1254,46 @@ function girisEkrani(mesaj) {
   };
 }
 
+// ── Kılıç'tan not ─────────────────────────────────────────────
+function zarfSVG() {
+  return `<svg viewBox="0 0 132 92" aria-hidden="true">
+    <rect x="3" y="3" width="126" height="86" rx="10" fill="var(--kagit)" stroke="var(--cizgi)" stroke-width="2"/>
+    <path d="M5 80 L52 44 M127 80 L80 44" fill="none" stroke="var(--cizgi)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M5 8 L66 52 L127 8" fill="none" stroke="var(--cizgi)" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="66" cy="52" r="13" fill="var(--gunes)"/>
+    <circle cx="66" cy="52" r="5" fill="var(--gunes-yumusak)"/>
+  </svg>`;
+}
+function mektupDavet() {
+  const el = $('#mektup');
+  el.innerHTML = `<div class="davet giris-anim">${zarfSVG()}
+    <h2 id="mektup-baslik">Kılıç'tan bir not var</h2>
+    <button class="dugme" data-eylem="not-ac">Aç</button>
+    <button class="metin-dugme" data-eylem="not-kapat">Sonra</button></div>`;
+  el.classList.remove('gizli');
+  el.querySelector('[data-eylem="not-ac"]').focus();
+}
+function mektupAc() {
+  const el = $('#mektup');
+  el.innerHTML = `<article class="kagit giris-anim" aria-labelledby="mektup-baslik">
+    <p class="selam-satir" id="mektup-baslik">${kac(MEKTUP_SELAM)}</p>
+    ${MEKTUP.map((p) => `<p>${kac(p)}</p>`).join('')}
+    <p class="imza">${kac(MEKTUP_IMZA)}</p>
+    <button class="dugme ikincil" data-eylem="not-kapat">Kapat</button></article>`;
+  el.classList.remove('gizli');
+  el.querySelector('.kagit').scrollTop = 0;
+  if (S.ayarlar && !S.ayarlar.notOkundu) {
+    S.ayarlar.notOkundu = true;
+    API.koy('ayarlar', { notOkundu: true }).then((r) => { S.ayarlar = r.ayarlar; }).catch(() => { S.ayarlar.notOkundu = false; });
+    ciz();
+  }
+}
+function mektupKapat() {
+  const el = $('#mektup');
+  el.classList.add('gizli');
+  el.innerHTML = '';
+}
+
 function gunesSimge() {
   return `<svg class="hediye-gunes" viewBox="0 0 92 92" aria-hidden="true">
     <circle cx="46" cy="46" r="40" fill="none" stroke="var(--halka)" stroke-width="8"/>
@@ -1208,8 +1306,7 @@ function hosgeldinEkrani() {
   $('#tam-ekran').innerHTML = `<div class="tam-ekran hosgeldin"><div class="ic">
     ${gunesSimge()}
     <h1>${kac(S.ayarlar.ad)} Hocam,</h1>
-    <p class="mektup">${kac(HEDIYE_NOTU)}</p>
-    <p class="imza">${kac(HEDIYE_IMZA)}</p>
+    <p class="giris">Güneşiniz, rutinleriniz, suyunuz ve öğünleriniz artık tek bir yerde.</p>
     <ul>
       <li><span>🕰️</span><span>24 saatlik güneş saati: gün doğumu, gün batımı, kafein ve uyku pencerenize göre günün ritmini gösterir.</span></li>
       <li><span>✅</span><span>Rutini tamamen siz kurarsınız: görev, saat, süre ve tekrar. Süreli görevler için sayaç var.</span></li>
@@ -1369,9 +1466,13 @@ document.addEventListener('click', async (ev) => {
     case 'zm-kapat': zamanlayiciKapat(); break;
     case 'hos-konum': hosgeldinBitir(true); break;
     case 'hos-gec': hosgeldinBitir(false); break;
+    case 'not': mektupDavet(); break;
+    case 'not-ac': mektupAc(); break;
+    case 'not-kapat': mektupKapat(); break;
+    case 'not-oku': sayfaKapat(); mektupAc(); break;
   }
 });
-document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') sayfaKapat(); });
+document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') { sayfaKapat(); mektupKapat(); } });
 
 // ── adres çubuğundaki işlemler (widget'tan gelen dokunuşlar) ──
 function adresIslemleri() {

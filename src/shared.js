@@ -21,6 +21,7 @@ const TP = (() => {
     suHedef: 2500, // ml
     bardak: 250, // ml
     hosgeldinGoruldu: false,
+    notOkundu: false,
     konumAyarlandi: false,
   };
 
@@ -333,7 +334,7 @@ const TP = (() => {
     if (x.kafeinBekle != null && sayiCoz(x.kafeinBekle) != null) a.kafeinBekle = Math.round(sayi(x.kafeinBekle, 0, 300));
     if (x.suHedef != null && sayiCoz(x.suHedef) != null) a.suHedef = Math.round(sayi(x.suHedef, 250, 8000));
     if (x.bardak != null && sayiCoz(x.bardak) != null) a.bardak = Math.round(sayi(x.bardak, 50, 1500));
-    for (const k of ['hosgeldinGoruldu', 'konumAyarlandi']) if (x[k] != null) a[k] = !!x[k];
+    for (const k of ['hosgeldinGoruldu', 'konumAyarlandi', 'notOkundu']) if (x[k] != null) a[k] = !!x[k];
     return a;
   }
 

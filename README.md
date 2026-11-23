@@ -117,7 +117,7 @@ Kestirmeler → **Otomasyon** → **+** → **Uygulama** → **EatBetter** → *
 
 ## 5. Kişiselleştirme
 
-- **Hediye notu ve imza:** `src/app.html` içinde `HEDIYE_NOTU` ve `HEDIYE_IMZA` satırları. Değiştirip GitHub'a gönderince Render kendiliğinden yeniden yayınlar.
+- **Kılıç'ın mektubu:** Ana ekranda ünlem rozeti çıkar; basınca "Kılıç'tan bir not var", **Aç** deyince mektup açılır. Okununca rozet kaybolur, mektup Ayarlar'dan tekrar okunabilir. Metin `src/app.html` içinde `MEKTUP_SELAM`, `MEKTUP` ve `MEKTUP_IMZA` satırlarında. Değiştirip GitHub'a gönderince Render kendiliğinden yeniden yayınlar.
 - **Uyanış/uyku saati, kafein kuralları, su hedefi, konum:** Uygulamada **Ayarlar** ekranından.
 - **Tema:** Ayarlar → Görünüm: güneşe göre / hep açık / hep koyu.
 - **Yedek:** Ayarlar → **Verileri indir** (tüm veri JSON olarak).
