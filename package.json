@@ -1,0 +1,20 @@
+{
+  "name": "tugce-protokolu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tuğçe Tartıcı için kişisel günlük protokol: güneş saati, görevler, su ve öğün takibi, iPhone widget'ı",
+  "type": "module",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test/api-test.mjs",
+    "onizleme": "node scripts/onizleme.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}

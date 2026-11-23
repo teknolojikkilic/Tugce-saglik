@@ -1,0 +1,25 @@
+# Render'ın ücretsiz planı gece uyuyan siteyi kendiliğinden uyandırmaz.
+# Bu iş her sabah siteye bir istek atar; site uyandıktan sonra gün boyu kendini açık tutar.
+# Saatler UTC: 02:40 = 05:40 ve 03:40 = 06:40 (Türkiye, UTC+3).
+name: Sabah uyandır
+
+on:
+  schedule:
+    - cron: "40 2 * * *"
+    - cron: "40 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  uyandir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Siteyi uyandır
+        run: |
+          for i in 1 2 3; do
+            if curl -fsS --max-time 120 "__SITE_ADRESI__/saglik-kontrol"; then
+              echo " — site uyandı"; exit 0
+            fi
+            sleep 20
+          done
+          echo "Site yanıt vermedi"; exit 1
