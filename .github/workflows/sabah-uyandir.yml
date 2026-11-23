@@ -17,7 +17,7 @@ jobs:
       - name: Siteyi uyandır
         run: |
           for i in 1 2 3; do
-            if curl -fsS --max-time 120 "__SITE_ADRESI__/saglik-kontrol"; then
+            if curl -fsS --max-time 120 "https://tugce-saglik.onrender.com/saglik-kontrol"; then
               echo " — site uyandı"; exit 0
             fi
             sleep 20

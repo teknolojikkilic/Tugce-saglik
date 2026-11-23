@@ -55,7 +55,7 @@ Render'ın ücretsiz planı, 15 dakika istek gelmeyen siteyi uyutur. Uyandırmas
 
 ## 2. Hediyeyi teslim et (Tuğçe Hoca'nın iPhone'unda)
 
-1. Linki gönder: `https://<site>.onrender.com/?k=ANAHTAR`. İlk açılışta anahtar telefona kaydedilir ve adres çubuğundan silinir.
+1. Linki gönder: `https://tugce-saglik.onrender.com/?k=ANAHTAR`. İlk açılışta anahtar telefona kaydedilir ve adres çubuğundan silinir.
 2. Hoş geldin ekranında **Konumumu kullan ve başla**. Güneş saati bu konuma göre hesaplanır.
 3. **Ana ekrana ekle:** Safari'de Paylaş → **Ana Ekrana Ekle**. Ana ekrandaki uygulama Safari'den ayrı hafıza kullandığı için ilk açılışta anahtarı bir kez sorar.
 
